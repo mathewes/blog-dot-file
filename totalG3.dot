@@ -1,0 +1,97 @@
+
+digraph TotalG{
+	node1[label=ParseSourceCode];
+	node2[label=ParseStatement];
+	node1->node2;
+	node2->node2;
+
+	node4[label=Block];
+	node5[label=Function];
+	node6[label=Variable];
+	node7[label=hostFunction];
+	node8[label=Ident];
+	node10[label=Return];
+	node11[label=While];
+	node12[label=Break];
+	node13[label=Continue];
+	node14[label=If];
+	node2->{node4;node5;node6;node7;node8;node10;node11;node12;node13;node14};
+
+	node41[label=ParseStatement];
+	node4->node41->node41;
+
+	node61[label=Size];
+	node62[label=AddSymbol];
+	node6->node61;
+	node61->node62;
+
+	node71[label=AddFunc];
+	node7->node71;
+
+	node51[label=ReadParam];
+	node52[label=AddFunc];
+	node5->node51->node52;
+
+	node81[label=Assign];
+	node82[label=FuncCall];
+	node8->{node81;node82};
+
+	node141[label="Open_Paren"];
+	node142[label=ParseExpr];
+	node143[label="Pop and Judge"];
+	node144[label=ParseStatement];
+	node145[label=AddJudgeTarget];
+	node14->node141->node142->node143->node144->node145;
+
+	node111[label=AddJudgeTarget];
+	node112[label=ParseExpr];
+	node113[label="Pop and Judge"];
+	node114[label=ParseStatement];
+	node115[label=JMP];
+	node116[label=EndTarget];
+	node11->node111->node112->node113->node114->node115;
+	node115->{node113;node116};
+
+	node121[label=Peek];
+	node122[label=JMP];
+	node12->node121->node122;
+
+	node131[label=Peek];
+	node132[label=JMP];
+	node13->node131->node132;
+
+	node811[label="LValue \nGet Symbol"];
+	node812[label="Propriate operator"];
+	node813[label=ParseExpr];
+	node814[label=Pop];
+	node815[label="Move or other \noperators"];
+	node81->node811->node812->node813->node814->node815;
+
+	node821[label=GetFuncName];
+	node822[label=ParseExpr];
+	node823[label=CallFunc];
+	node82->node821->node822->node823;
+
+	nodeA1[label=ParseExpr];
+	nodeA2[label=ParseSubExpr];
+	nodeA3[label="Relation or \nLogincal operator"];
+	nodeA4[label=ParseSubExpr];
+	nodeA1->nodeA2->nodeA3->nodeA4->nodeA3;
+
+	nodeA5[label=ParseSubExpr];
+	nodeA21[label=ParseTerm];
+	nodeA22[label="Add, Sub or\n Concat"];
+	nodeA23[label=ParseTerm];
+	nodeA5->nodeA21->nodeA22->nodeA23->nodeA22;
+
+	nodeA6[label=ParseTerm];
+	nodeA61[label=ParseFactor];
+	nodeA62[label="Mul, Div, Exp\n or bitwise"];
+	nodeA63[label=ParseFactor];
+	nodeA6->nodeA61->nodeA62->nodeA63->nodeA61;
+
+	nodeA7[label=ParseFactor];
+	nodeA71[label=MayBeOpeartor];
+	nodeA72[label=Data];
+	nodeA7->nodeA71->nodeA72;
+};

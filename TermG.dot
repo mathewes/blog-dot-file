@@ -1,0 +1,9 @@
+
+digraph TermG{
+	node1[label=Factor];
+	node2[label=opearor exclude sum or minus];
+	node3[label=Factor];
+	node1->node2;
+	node2->node3;
+	node3->node1;
+}
