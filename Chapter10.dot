@@ -1,0 +1,11 @@
+graph G{
+	node1[label="RunScript"];
+	node2[label="OpCode"];
+	node3[label="Binary operation"];
+	node4[label="Unary operation"];
+	node5[label="String Processing"];
+	node6[label="Conditional\nBranching"];
+	node7[label="Stack"];
+	node8[label="FuncCall"];
+	node1->node4->node2;
+};
