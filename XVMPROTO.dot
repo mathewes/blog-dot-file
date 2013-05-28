@@ -39,4 +39,20 @@ digraph G{
 	node822[label="GetStackValue"];
 	node823[label="PopFrame"];
 	node82->node821->node822->node823;
+
+	node21[label="CopyValue(Easy)"];
+	node22[label="CoerceValueToxxx(Easy)"];
+	node21->node22->node21;
+
+	node23[label="ResolveOpStackIndex"];
+	node24[label="ResolveOpValue"];
+	node25[label="ResolveOpType"];
+	node26[label="ResolveOpAsxxx"];
+	node27[label="ResolveOpPntr\n(Must be \nStack or Return)"];
+	node28[label="PrintOpIndir"];
+	node29[label="PrintOpValue"];
+
+	node23->node24->{node25;node26};
+
+	node27->node28->node27;
 };
